@@ -21,7 +21,7 @@ const Navbar = (props) => {
                     <ul className="navbar-nav text-center nav nav-pills">
 
                         <li className="nav-item">
-                            <Link className="nav-link" to={"/products"}>Productos</Link>
+                            <Link className="nav-link" to={"/products"}>Editar Productos</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to={"/products/add"}>Agregar Producto</Link>

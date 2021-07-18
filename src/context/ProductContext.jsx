@@ -12,6 +12,11 @@ export const ProductsProvider = ({children}) => {
         getProductList()
     }, [])
 
+    function getProduct(productId) {
+       return productList.find(product => product._id === productId)
+
+    }
+
     function getProductList() {
         axios.get('http://localhost:3000/products')
         .then(data=>setProductList(data.data))
@@ -47,7 +52,7 @@ export const ProductsProvider = ({children}) => {
     
     
     return (
-        <ProductContext.Provider value={{productList, deleteProduct, addProduct, updateProduct}}>
+        <ProductContext.Provider value={{productList, deleteProduct, addProduct, updateProduct, getProduct}}>
             {children}
         </ProductContext.Provider>
     )
