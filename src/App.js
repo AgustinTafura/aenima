@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap'
+import '@fortawesome/fontawesome-free/js/all';
 import './App.css';
+import {BrowserRouter} from 'react-router-dom';
+import Routes from './routes/routes'
+import Navbar  from "./components/navbar";
+import { ProductsProvider } from './context/ProductContext';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter  basename={"/aenima"}>
+        
+        <ProductsProvider>
+
+					<Navbar/>
+					<div className='container mt-5 pt-5'>
+						<Routes/>
+					</div>
+
+        </ProductsProvider>
+  
+      </BrowserRouter>
     </div>
   );
 }

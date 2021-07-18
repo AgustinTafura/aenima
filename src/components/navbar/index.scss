@@ -1,0 +1,42 @@
+nav{
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+    // box-shadow: 0 2px 8px 0 #3232320a;
+    margin: 0!important;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+
+    .collapse {
+        li:nth-last-child(1){
+            a, button{
+                font-weight: bold;
+                color: white;
+                &:hover {
+                    color: var(--secondary);
+                } 
+            }
+        }
+    } 
+
+    ul li > a,div {
+        color: white !important;
+
+    }
+
+   .collapse li:nth-last-child(1) a {
+        font-weight: unset
+    }
+
+    .dropdown-menu {
+        background-color: var(--primary);
+        border: none;
+    }
+
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: unset;
+    }
+}
+
