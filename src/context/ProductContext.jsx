@@ -47,9 +47,11 @@ export const ProductsProvider = ({children}) => {
 
     async function updateProduct(productId, data) {
         axios.put(`http://localhost:3000/products/${productId}`,{data})
-        .then(data=>{
-            console.log(data);
-            getProductList()
+        .then(productUpdated=>{
+            const index = productList.findIndex(product => product.id === productId)
+            const newProductList = [...productList];
+            newProductList.splice(index, 1, productUpdated.data)
+            setProductList(newProductList)
             return data
         })
         .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
