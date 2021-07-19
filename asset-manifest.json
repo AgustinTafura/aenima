@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/aenima-frontend/static/css/main.337235f0.chunk.css",
-    "main.js": "/aenima-frontend/static/js/main.0d49d3c5.chunk.js",
-    "main.js.map": "/aenima-frontend/static/js/main.0d49d3c5.chunk.js.map",
-    "runtime-main.js": "/aenima-frontend/static/js/runtime-main.ce1d13f7.js",
-    "runtime-main.js.map": "/aenima-frontend/static/js/runtime-main.ce1d13f7.js.map",
-    "static/css/2.658248ec.chunk.css": "/aenima-frontend/static/css/2.658248ec.chunk.css",
-    "static/js/2.ce5cf25b.chunk.js": "/aenima-frontend/static/js/2.ce5cf25b.chunk.js",
-    "static/js/2.ce5cf25b.chunk.js.map": "/aenima-frontend/static/js/2.ce5cf25b.chunk.js.map",
-    "static/js/3.51019e2c.chunk.js": "/aenima-frontend/static/js/3.51019e2c.chunk.js",
-    "static/js/3.51019e2c.chunk.js.map": "/aenima-frontend/static/js/3.51019e2c.chunk.js.map",
-    "index.html": "/aenima-frontend/index.html",
-    "static/css/2.658248ec.chunk.css.map": "/aenima-frontend/static/css/2.658248ec.chunk.css.map",
-    "static/css/main.337235f0.chunk.css.map": "/aenima-frontend/static/css/main.337235f0.chunk.css.map",
-    "static/js/2.ce5cf25b.chunk.js.LICENSE.txt": "/aenima-frontend/static/js/2.ce5cf25b.chunk.js.LICENSE.txt"
+    "main.css": "/aenimaFrontend/static/css/main.337235f0.chunk.css",
+    "main.js": "/aenimaFrontend/static/js/main.739bfeb7.chunk.js",
+    "main.js.map": "/aenimaFrontend/static/js/main.739bfeb7.chunk.js.map",
+    "runtime-main.js": "/aenimaFrontend/static/js/runtime-main.60deb64f.js",
+    "runtime-main.js.map": "/aenimaFrontend/static/js/runtime-main.60deb64f.js.map",
+    "static/css/2.658248ec.chunk.css": "/aenimaFrontend/static/css/2.658248ec.chunk.css",
+    "static/js/2.ce5cf25b.chunk.js": "/aenimaFrontend/static/js/2.ce5cf25b.chunk.js",
+    "static/js/2.ce5cf25b.chunk.js.map": "/aenimaFrontend/static/js/2.ce5cf25b.chunk.js.map",
+    "static/js/3.51019e2c.chunk.js": "/aenimaFrontend/static/js/3.51019e2c.chunk.js",
+    "static/js/3.51019e2c.chunk.js.map": "/aenimaFrontend/static/js/3.51019e2c.chunk.js.map",
+    "index.html": "/aenimaFrontend/index.html",
+    "static/css/2.658248ec.chunk.css.map": "/aenimaFrontend/static/css/2.658248ec.chunk.css.map",
+    "static/css/main.337235f0.chunk.css.map": "/aenimaFrontend/static/css/main.337235f0.chunk.css.map",
+    "static/js/2.ce5cf25b.chunk.js.LICENSE.txt": "/aenimaFrontend/static/js/2.ce5cf25b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ce1d13f7.js",
+    "static/js/runtime-main.60deb64f.js",
     "static/css/2.658248ec.chunk.css",
     "static/js/2.ce5cf25b.chunk.js",
     "static/css/main.337235f0.chunk.css",
-    "static/js/main.0d49d3c5.chunk.js"
+    "static/js/main.739bfeb7.chunk.js"
   ]
 }
