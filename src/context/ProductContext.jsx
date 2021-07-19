@@ -52,6 +52,7 @@ export const ProductsProvider = ({children}) => {
             const index = productList.findIndex(product => product.id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1, productUpdated.data)
+            console.log(7777777,newProductList)
             setProductList(newProductList)
             return data
         })

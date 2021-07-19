@@ -10,7 +10,7 @@ const ProductsList = () => {
     const history = useHistory();
 
     const [productToDelete, setProductToDelete] = useState({})
-    const [productsToShow, setProductsToShow] = useState(productList)
+    const [productsToShow, setProductsToShow] = useState([])
 
     const nombres =[]
     const marcas =[]
@@ -35,6 +35,11 @@ const ProductsList = () => {
         nombres.push(product.nombre)
     })
 
+
+    useEffect(() => {
+        setProductsToShow(productList)
+
+    }, [productList])
 
     return (
         <>
