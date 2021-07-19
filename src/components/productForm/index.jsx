@@ -1,5 +1,4 @@
-import { useContext, useReducer,useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useContext, useReducer } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { ProductContext } from '../../context/ProductContext';
 

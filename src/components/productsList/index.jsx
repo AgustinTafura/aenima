@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { useEffect, useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { ProductContext } from '../../context/ProductContext'
 import ProductDeleteConfirmation from '../productDeleteConfirmation'
 import $ from 'jquery'
@@ -16,7 +15,7 @@ const ProductsList = () => {
         $('#deleteProductModal').modal('show')
     }
 
-    if (productList.length == 0) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
+    if (productList.length === 0) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
 
     return (
         <>

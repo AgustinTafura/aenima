@@ -1,14 +1,12 @@
-import axios from 'axios'
-import { useEffect, useState, useContext } from 'react'
+import { useContext } from 'react'
 import { ProductContext } from '../context/ProductContext'
-import { Link } from 'react-router-dom'
 import ProductCard from '../components/productCard'
 
 
 const ProductsContainer = () => {
     const {productList} = useContext(ProductContext)
 
-    if (productList.length == 0) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
+    if (productList.length === 0) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
 
     return (
         <>

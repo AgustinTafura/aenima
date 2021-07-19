@@ -37,7 +37,7 @@ const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button onClick={()=>deleteProductById(productToDelete._id)} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
+                            <button onClick={()=>deleteProduct} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
 
                         </div>
                     </div>
