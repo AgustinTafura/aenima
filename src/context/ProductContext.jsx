@@ -19,13 +19,13 @@ export const ProductsProvider = ({children}) => {
     }
 
     async function getProductList() {
-        axios.get('http://localhost:3000/products')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
         .then(data=>setProductList(data.data))
         .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
 
     async function deleteProductById(productId) {
-        axios.delete(`http://localhost:3000/products/${productId}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
         .then(data=>{
             // console.log(data);
             const index = productList.findIndex(product => product.id === productId)
@@ -38,7 +38,7 @@ export const ProductsProvider = ({children}) => {
     }
 
     async function getProductByIdFromDB(productId) {
-        axios.get(`http://localhost:3000/products/${productId}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
         .then(data=>{
             console.log(data)
             return data
@@ -47,7 +47,7 @@ export const ProductsProvider = ({children}) => {
     }
 
     async function updateProduct(productId, data) {
-        axios.put(`http://localhost:3000/products/${productId}`,{data})
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`,{data})
         .then(productUpdated=>{
             const index = productList.findIndex(product => product.id === productId)
             const newProductList = [...productList];
@@ -60,7 +60,7 @@ export const ProductsProvider = ({children}) => {
     }
 
     async function addProduct(product) {
-        axios.post(`http://localhost:3000/products`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/products`, {
             product
         })
         .then(data=>{

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter  basename={"/aenima"}>
-        
+        {console.log('LOCALHOST', process.env.REACT_APP_BACKEND_URL)}
         <ProductsProvider>
 
 					<Navbar/>
