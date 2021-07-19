@@ -15,9 +15,9 @@ const ProductsContainer = () => {
             <div className='container mt-5 pt-5'>
                 <div className='row d-flex justify-content-center justify-content-md-between'>
                     {
-                        productList.map(product=>{
+                        productList.map((product,i)=>{
                             return (
-                                <ProductCard product={product} />
+                                <ProductCard key={i} product={product} />
                             )
                         })
                     }

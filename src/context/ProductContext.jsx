@@ -12,47 +12,64 @@ export const ProductsProvider = ({children}) => {
         getProductList()
     }, [])
 
-    function getProduct(productId) {
+    function getProductById(productId) {
+        
        return productList.find(product => product._id === productId)
 
     }
 
-    function getProductList() {
+    async function getProductList() {
         axios.get('http://localhost:3000/products')
         .then(data=>setProductList(data.data))
-        .catch(err=>console.log(err))
+        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
 
-    function deleteProduct(productId) {
+    async function deleteProductById(productId) {
         axios.delete(`http://localhost:3000/products/${productId}`)
         .then(data=>{
-            console.log(data);
-            getProductList()
+            // console.log(data);
+            const index = productList.findIndex(product => product.id === productId)
+            const newProductList = [...productList];
+            newProductList.splice(index, 1)
+            setProductList(newProductList)
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
 
-    function updateProduct(productId) {
-        axios.put(`http://localhost:3000/products/${productId}`)
+    async function getProductByIdFromDB(productId) {
+        axios.get(`http://localhost:3000/products/${productId}`)
+        .then(data=>{
+            console.log(data)
+            return data
+        })
+        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+    }
+
+    async function updateProduct(productId, data) {
+        axios.put(`http://localhost:3000/products/${productId}`,{data})
         .then(data=>{
             console.log(data);
             getProductList()
+            return data
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
 
-    function addProduct(productId) {
-        axios.post(`http://localhost:3000/products`)
+    async function addProduct(product) {
+        axios.post(`http://localhost:3000/products`, {
+            product
+        })
         .then(data=>{
             console.log(data);
-            getProductList()
+            setProductList([...productList, product])
+            return data
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
     
     
     return (
-        <ProductContext.Provider value={{productList, deleteProduct, addProduct, updateProduct, getProduct}}>
+        <ProductContext.Provider value={{productList, deleteProductById, addProduct, updateProduct, getProductByIdFromDB, getProductById}}>
             {children}
         </ProductContext.Provider>
     )

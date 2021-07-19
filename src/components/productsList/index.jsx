@@ -3,12 +3,15 @@ import { useEffect, useState, useContext } from 'react'
 import { ProductContext } from '../../context/ProductContext'
 import ProductDeleteConfirmation from '../productDeleteConfirmation'
 import $ from 'jquery'
+import { Link } from 'react-router-dom'
+
 
 const ProductsList = () => {
     const {productList} = useContext(ProductContext)
     const [productToDelete, setProductToDelete] = useState({})
 
     function openDeleteModal(product) {
+        console.log(product)
         setProductToDelete(product)
         $('#deleteProductModal').modal('show')
     }
@@ -17,7 +20,12 @@ const ProductsList = () => {
 
     return (
         <>
-            <table className="table">
+
+            <button className='btn btn-info'>
+                <Link className="nav-link text-white" to={"/products/add"}>Agregar nuevo Producto</Link>
+            </button>
+
+            <table className="table mt-5">
                 <thead>
                     <tr>
                         <th scope="col">Imagen </th>
@@ -31,15 +39,15 @@ const ProductsList = () => {
                 </thead>
                 <tbody>
                     {
-                        productList.map(product=>{
+                        productList.map((product, i)=>{
                             return (
-                                <tr key={product.nombre}>
-                                    <td className='py-1' ><img src={product.imagenUrl} alt=""  style={{width:'4rem'}} /></td>
+                                <tr key={i}>
+                                    <td className='py-1' > <Link to={`/products/${product._id}`}> <img src={product.imagenUrl} alt=""  style={{width:'4rem'}} /> </Link></td>
                                     <td>{product.nombre}</td>
-                                    <td>{product.descripcion}</td>
                                     <td>{product.marca}</td>
+                                    <td>{product.descripcion}</td>
                                     <td>{product.precio}</td>
-                                    <td><button className='btn btn-warning'><i className="far fa-edit"></i></button></td>
+                                    <td> <Link to={`/products/edit/${product._id}`}> <button className='btn btn-warning'><i className="far fa-edit"></i></button></Link></td>
                                     <td><button onClick={()=>openDeleteModal(product)} className='btn btn-danger'><i className="far fa-trash-alt "></i></button></td>
                                 </tr>
                             )

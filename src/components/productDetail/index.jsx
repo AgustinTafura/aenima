@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import ProductCard from '../productCard';
 
 const ProductDetail = () => {
-    const {getProduct} = useContext(ProductContext)
+    const {getProductById} = useContext(ProductContext)
     const {id} = useParams()
-    const product =  getProduct(id)
+    const product =  getProductById(id)
 
     if (!product) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
 

@@ -23,9 +23,6 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <Link className="nav-link" to={"/products"}>Editar Productos</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to={"/products/add"}>Agregar Producto</Link>
-                        </li>
 
                     </ul>
                 </div>

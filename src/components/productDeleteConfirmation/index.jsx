@@ -1,19 +1,24 @@
 import $ from 'jquery'
 import { useEffect, useContext } from 'react'
+import {  useHistory } from "react-router-dom";
+
 import { ProductContext } from '../../context/ProductContext'
 
 const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
 
-    const {deleteProduct} = useContext(ProductContext)
-    
-    
+    const {deleteProductById} = useContext(ProductContext)
+    const history = useHistory();
+
+    function deleteProduct(){
+        deleteProductById(productToDelete._id)
+        return history.push("/products")
+    }
     
     useEffect(() => {
         $('#deleteProductModal').on('hidden.bs.modal', function (e) {
             e.stopPropagation()
             setProductToDelete({})
         })
-
         return () => {
             $('#deleteProductModal').on('hidden.bs.modal', function (e) {})
         }
@@ -32,7 +37,7 @@ const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button onClick={()=>deleteProduct(productToDelete._id)} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
+                            <button onClick={()=>deleteProductById(productToDelete._id)} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
 
                         </div>
                     </div>
