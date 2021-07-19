@@ -1,21 +1,40 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect} from 'react'
 import { ProductContext } from '../../context/ProductContext'
 import ProductDeleteConfirmation from '../productDeleteConfirmation'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
-
+import {  useHistory } from "react-router-dom";
 
 const ProductsList = () => {
     const {productList} = useContext(ProductContext)
+    const history = useHistory();
+
     const [productToDelete, setProductToDelete] = useState({})
+    const [productsToShow, setProductsToShow] = useState(productList)
+
+    const nombres =[]
+    const marcas =[]
 
     function openDeleteModal(product) {
         console.log(product)
         setProductToDelete(product)
         $('#deleteProductModal').modal('show')
     }
+    
+    function filter(e){
+        const value = e.target.value
+        const name = e.target.name
+        var newDataToShow = productList.filter(product => product[name] === value)
+        console.log(name, value, newDataToShow)
+        value ? setProductsToShow(newDataToShow) : setProductsToShow(productList)
+    }
 
-    if (productList.length === 0) { return <div><span className="spinner-border spinner-border-sm"></span> Cargando productos</div> }
+
+    productList.forEach((product, i)=>{
+        marcas.push(product.marca)
+        nombres.push(product.nombre)
+    })
+
 
     return (
         <>
@@ -24,12 +43,35 @@ const ProductsList = () => {
                 <Link className="nav-link text-white" to={"/products/add"}>Agregar nuevo Producto</Link>
             </button>
 
+
             <table className="table mt-5">
                 <thead>
                     <tr>
                         <th scope="col">Imagen </th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Marca</th>
+                        <th scope="col">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text">Nombre</div>
+                                </div>
+                                <select name='nombre' onChange={filter} className="form-control">
+                                    <option value="">Todo</option>
+                                    {nombres?.map((marca,i)=> <option key={i} value={marca}>{marca}</option>)}
+                                    
+                                </select>  
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text">Marca</div>
+                                </div>
+                                <select name='marca' onChange={filter} className="form-control">
+                                    <option value="">Todo</option>
+                                    {marcas?.map((marca,i)=> <option key={i} value={marca}>{marca}</option>)}
+                                    
+                                </select>  
+                            </div>
+                        </th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Precio</th>
                         <th></th>
@@ -38,7 +80,9 @@ const ProductsList = () => {
                 </thead>
                 <tbody>
                     {
-                        productList.map((product, i)=>{
+                        productsToShow.map((product, i)=>{
+
+
                             return (
                                 <tr key={i}>
                                     <td className='py-1' > <Link to={`/products/${product._id}`}> <img src={product.imagenUrl} alt=""  style={{width:'4rem'}} /> </Link></td>

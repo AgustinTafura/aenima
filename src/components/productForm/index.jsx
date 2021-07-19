@@ -24,9 +24,10 @@ const ProductForm = () => {
 
     function handleFormSubmit(e){
         e.preventDefault()
-        console.log(product,formData)
-        id ?  updateProduct(id, formData) : addProduct(formData)
-        return history.push("/products"); 
+        id ?  
+            updateProduct(id, formData).then(history.push("/products")) 
+        :   addProduct(formData).then(history.push("/products")) 
+        ; 
     }
 
 

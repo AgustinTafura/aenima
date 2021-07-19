@@ -32,6 +32,7 @@ export const ProductsProvider = ({children}) => {
             const newProductList = [...productList];
             newProductList.splice(index, 1)
             setProductList(newProductList)
+            return data
         })
         .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
