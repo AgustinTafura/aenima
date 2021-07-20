@@ -63,10 +63,10 @@ export const ProductsProvider = ({children}) => {
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/products`, {
             product
         })
-        .then(data=>{
-            console.log(data);
-            setProductList([...productList, product])
-            return data
+        .then(newProduct=>{
+            console.log(newProduct);
+            setProductList([...productList, newProduct.data])
+            return newProduct
         })
         .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
     }
