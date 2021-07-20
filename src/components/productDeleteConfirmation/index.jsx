@@ -11,7 +11,6 @@ const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
 
     function deleteProduct(){
         deleteProductById(productToDelete._id)
-        return history.push("/products")
     }
     
     useEffect(() => {
@@ -37,7 +36,7 @@ const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
                         </div>
                         <div className="modal-footer">
                             <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button onClick={()=>deleteProduct} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
+                            <button onClick={()=>deleteProduct()} className="btn btn-light" type="button" data-dismiss="modal">Aceptar</button>
 
                         </div>
                     </div>

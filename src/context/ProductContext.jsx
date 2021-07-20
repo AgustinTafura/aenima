@@ -27,10 +27,10 @@ export const ProductsProvider = ({children}) => {
     async function deleteProductById(productId) {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
         .then(data=>{
-            // console.log(data);
-            const index = productList.findIndex(product => product.id === productId)
+            const index = productList.findIndex(product => product._id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1)
+            console.log(data, index, newProductList, productList);
             setProductList(newProductList)
             return data
         })
@@ -49,7 +49,7 @@ export const ProductsProvider = ({children}) => {
     async function updateProduct(productId, data) {
         axios.put(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`,{data})
         .then(productUpdated=>{
-            const index = productList.findIndex(product => product.id === productId)
+            const index = productList.findIndex(product => product._id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1, productUpdated.data)
             console.log(7777777,newProductList)
