@@ -52,18 +52,7 @@ const ProductsList = () => {
                 <thead>
                     <tr>
                         <th scope="col">Imagen </th>
-                        <th scope="col">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <div className="input-group-text">Nombre</div>
-                                </div>
-                                <select name='nombre' onChange={filter} className="form-control">
-                                    <option value="">Todo</option>
-                                    {nombres?.map((marca,i)=> <option key={i} value={marca}>{marca}</option>)}
-                                    
-                                </select>  
-                            </div>
-                        </th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">
                             <div className="input-group">
                                 <div className="input-group-prepend">
