@@ -1,13 +1,11 @@
 import $ from 'jquery'
 import { useEffect, useContext } from 'react'
-import {  useHistory } from "react-router-dom";
 
 import { ProductContext } from '../../context/ProductContext'
 
 const ProductDeleteConfirmation = ({productToDelete, setProductToDelete}) => {
 
     const {deleteProductById} = useContext(ProductContext)
-    const history = useHistory();
 
     function deleteProduct(){
         deleteProductById(productToDelete._id)

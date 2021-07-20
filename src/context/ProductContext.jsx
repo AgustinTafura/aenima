@@ -21,7 +21,7 @@ export const ProductsProvider = ({children}) => {
     async function getProductList() {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/products`)
         .then(data=>setProductList(data.data))
-        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+        .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
 
     async function deleteProductById(productId) {
@@ -30,20 +30,18 @@ export const ProductsProvider = ({children}) => {
             const index = productList.findIndex(product => product._id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1)
-            console.log(data, index, newProductList, productList);
             setProductList(newProductList)
             return data
         })
-        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+        .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
 
     async function getProductByIdFromDB(productId) {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
-        .then(data=>{
-            console.log(data)
-            return data
+        .then(product=>{
+            return product.data
         })
-        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+        .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
 
     async function updateProduct(productId, data) {
@@ -52,11 +50,10 @@ export const ProductsProvider = ({children}) => {
             const index = productList.findIndex(product => product._id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1, productUpdated.data)
-            console.log(7777777,newProductList)
             setProductList(newProductList)
             return data
         })
-        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+        .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
 
     async function addProduct(product) {
@@ -64,11 +61,10 @@ export const ProductsProvider = ({children}) => {
             product
         })
         .then(newProduct=>{
-            console.log(newProduct);
             setProductList([...productList, newProduct.data])
             return newProduct
         })
-        .catch(err=>{console.log(err) ; alert('hubo un inconveniente, por favor intentelo mas tarde')})
+        .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
     
     

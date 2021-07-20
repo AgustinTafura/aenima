@@ -3,11 +3,11 @@ import { ProductContext } from '../../context/ProductContext'
 import ProductDeleteConfirmation from '../productDeleteConfirmation'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
-import {  useHistory } from "react-router-dom";
+
 
 const ProductsList = () => {
     const {productList} = useContext(ProductContext)
-    const history = useHistory();
+
 
     const [productToDelete, setProductToDelete] = useState({})
     const [productsToShow, setProductsToShow] = useState([])
@@ -16,7 +16,6 @@ const ProductsList = () => {
     const marcas =[]
 
     function openDeleteModal(product) {
-        console.log(product)
         setProductToDelete(product)
         $('#deleteProductModal').modal('show')
     }
@@ -25,7 +24,6 @@ const ProductsList = () => {
         const value = e.target.value
         const name = e.target.name
         var newDataToShow = productList.filter(product => product[name] === value)
-        console.log(name, value, newDataToShow)
         value ? setProductsToShow(newDataToShow) : setProductsToShow(productList)
     }
 
