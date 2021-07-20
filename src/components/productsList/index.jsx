@@ -29,8 +29,9 @@ const ProductsList = () => {
 
 
     productList.forEach((product, i)=>{
-        marcas.push(product.marca)
-        nombres.push(product.nombre)
+        !marcas.includes(product.marca) && marcas.push(product.marca)
+        !nombres.includes(product.nombre) && nombres.push(product.nombre)
+        
     })
 
 

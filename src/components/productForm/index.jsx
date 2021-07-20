@@ -1,7 +1,7 @@
 import { useContext, useReducer } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { ProductContext } from '../../context/ProductContext';
-
+import { Link } from 'react-router-dom';
 
 const ProductForm = () => {
     const titles = ['nombre', 'marca', 'descripcion', 'precio', 'imagenUrl']
@@ -10,9 +10,9 @@ const ProductForm = () => {
     const {id} = useParams()
     const product = id? getProductById(id) : {}
     
-    const [formData, setFormData] = useReducer(reducer, {})
+    const [formData, setFormData] = useReducer(formDataReducer, {})
 
-    function reducer(state,action){
+    function formDataReducer(state,action){
 
         const name = action?.name
         const value = action?.value
@@ -45,7 +45,7 @@ const ProductForm = () => {
                                 </div>
                                 <input 
                                     defaultValue={product ? product[`${title}`] : ''} 
-                                    onChange={(e)=>setFormData({name:title,value:e.target.value})}  
+                                    onChange={(e)=>setFormData({name:title,value:e.target.value.trim().toUpperCase()})}  
                                     type="text" className="form-control" required
                                 />                                
                             </div>
@@ -54,8 +54,8 @@ const ProductForm = () => {
                     
                 }
                 
-                <button type='submit' className="btn btn-primary"> {id ? 'Actualizar' : 'Agregar'}</button>
-
+                <button type='submit' className="btn btn-primary mx-2"> {id ? 'Actualizar' : 'Agregar'}</button>
+                <button className="btn btn-ligth mx-2"><Link to='/products'>Cancelar</Link></button>
             </form>
         </div>
 
