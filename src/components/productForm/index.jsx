@@ -45,7 +45,7 @@ const ProductForm = () => {
                                 </div>
                                 <input 
                                     defaultValue={product ? product[`${title}`] : ''} 
-                                    onChange={(e)=>setFormData({name:title,value:e.target.value.trim().toUpperCase()})}  
+                                    onChange={(e)=>setFormData({name:title,value:e.target.value.trim()})}  
                                     type="text" className="form-control" required
                                 />                                
                             </div>

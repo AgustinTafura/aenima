@@ -47,7 +47,6 @@ const ProductsList = () => {
                 <Link className="nav-link text-white" to={"/products/add"}>Agregar nuevo Producto</Link>
             </button>
 
-
             <table className="table mt-5">
                 <thead>
                     <tr>
@@ -78,7 +77,7 @@ const ProductsList = () => {
 
                             return (
                                 <tr key={i}>
-                                    <td className='py-1' > <Link to={`/products/${product._id}`}> <img src={product.imagenUrl} alt=""  style={{width:'4rem'}} /> </Link></td>
+                                    <td className='py-1' > <Link to={`/products/${product._id}`}> <img src={`${process.env.REACT_APP_BACKEND_URL}/images/${product.imagenUrl}`} alt=""  style={{width:'4rem'}} /> </Link></td>
                                     <td>{product.nombre}</td>
                                     <td>{product.marca}</td>
                                     <td>{product.descripcion}</td>
