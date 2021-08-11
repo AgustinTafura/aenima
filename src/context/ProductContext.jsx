@@ -44,14 +44,14 @@ export const ProductsProvider = ({children}) => {
         .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
 
-    async function updateProduct(productId, data) {
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`,{data})
+    async function updateProduct(productId, product) {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`,{product})
         .then(productUpdated=>{
             const index = productList.findIndex(product => product._id === productId)
             const newProductList = [...productList];
             newProductList.splice(index, 1, productUpdated.data)
             setProductList(newProductList)
-            return data
+            return productUpdated.data
         })
         .catch(err=>{alert('hubo un inconveniente, por favor intentelo mas tarde'); return err })
     }
